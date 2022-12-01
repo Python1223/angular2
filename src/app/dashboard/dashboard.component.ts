@@ -22,54 +22,31 @@ export class DashboardComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
     this.notesService.getNotes().subscribe(response => {
-
       if (response) {
-
         this.notelist = response;
-
       } else {
-
         this.errMessage = 'We are unable to retreive notes list.';
-
       }
     }, error => {
-
       this.errMessage = 'Http failure response for http://localhost:3000/notes: 404 Not Found';
-
     });
-
   }
 
   SaveItem(){
-
     if (!this.item.title || !this.item.text) {
-
       this.errMessage = 'Title and Text both are required fields';
-
       return;
-
   }
-
   this.notesService.addNote(this.item).subscribe(response => {
-
     if (response) {
-
       this.notelist.push(this.item);
-
       this.item = new Note();
-
     } else {
-
       this.errMessage = 'We are unable to add the selected note.';
-
     }
-
   }, error => {
-
     this.errMessage = 'Http failure response for http://localhost:3000/notes: 404 Not Found';
-
   });
 
   }}
