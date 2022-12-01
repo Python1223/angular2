@@ -1,0 +1,15 @@
+<mat-toolbar>
+    <span *ngIf="lc.getItem('status')!=='loggedin' then trueBlock else falseBlock"></span>
+    <ng-template #trueBlock>
+        <li><a routerLink="./login">Login</a></li>
+        <li><a routerLink="./dashboard">Dashboard</a></li>
+    </ng-template>
+
+    <ng-template #falseBlock>
+        <li id="name">RITTIK <i>(logged in)</i></li>
+        <li><a routerLink="./dashboard">Dashboard</a></li>
+        <li><a (click)="LogoutHandler()">Logout</a></li>
+
+    </ng-template>
+
+</mat-toolbar>
